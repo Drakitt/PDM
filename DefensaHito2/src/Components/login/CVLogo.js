@@ -5,22 +5,22 @@ import {
   Text,
   Image
 } from 'react-native';
-import Logo from '../img/coronavirus.png'
+import Logo from '../../images/coronavirus.png'
 
-export default class logo extends Component{
+export default class CVLogo extends Component{
     constructor(props){
         super(props);
     }
     render(){
         return(
-            <>
+            
                 <View style={styles.container}>
                     <Image source={Logo} style={styles.image}/>
                     <Text style={styles.text}>
-                        Coronavairus
+                        Epidemia Corona Virus
                     </Text>
                 </View>
-            </>
+            
         );
     }
 }
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center',
         justifyContent:'center',
+        backgroundColor:'transparent',
     },
     image:{
         width:80,
@@ -38,6 +39,6 @@ const styles = StyleSheet.create({
         color:'white',
         fontWeight:'bold',
         backgroundColor:'transparent',
-        marginTop:20,
+        marginTop:10,
     }
-})
+});
