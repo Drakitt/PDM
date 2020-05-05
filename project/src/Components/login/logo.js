@@ -5,7 +5,9 @@ import {
   Text,
   Image
 } from 'react-native';
-import Logo from '../../images/coronavirus.png'
+import Colors from '../../Config/Colors';
+import Constants from'../../Config/Constants';
+import Images from'../../Config/Images';
 
 export default class logo extends Component{
     constructor(props){
@@ -15,7 +17,7 @@ export default class logo extends Component{
         return(
             <>
                 <View style={styles.container}>
-                    <Image source={Logo} style={styles.image}/>
+                    <Image source={Images.LOGO} style={styles.image}/>
                     <Text style={styles.text}>
                         Coronavairus
                     </Text>

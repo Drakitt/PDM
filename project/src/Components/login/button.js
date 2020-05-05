@@ -1,49 +1,49 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import {StyleSheet, View, TouchableOpacity,Text} from 'react-native';
+import React from 'react';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native';
+
 import Colors from '../../Config/Colors';
 
-class button extends Component {
-    //constructor(props){
-       // super(props);
-       // this._onPress=this._onPress.bind(this);
-    //}
+const Button = ({titleButton, onPress, isLoading}) => {
+  const loader = () => {
+    return <ActivityIndicator animating={isLoading} />;
+  };
+  const button = () => {
+    return (
+      <TouchableOpacity style={styles.button} onPress={onPress}>
+        <Text style={styles.text}>{titleButton}</Text>
+      </TouchableOpacity>
+    );
+  };
 
-    render() {
-        return (
-            <View>
-                <TouchableOpacity
-                style={stylesButton.container}
-                onPress={this.props.onPress}>
-                 <Text
-                 style={stylesButton.text}>{this.props.titleButton}
-                 </Text>
-                </TouchableOpacity>       
-            </View>
-        );
-    }
-}
-const stylesButton = StyleSheet.create({
-  container: {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.blue,
-    marginBottom: 12,
-    paddingVertical: 12,
+  return <View style={styles.button}>{isLoading ? loader() : button()}</View>;
+};
+
+const styles = StyleSheet.create({
+  button: {
+    display: 'flex',
+    height: 40,
     borderRadius: 5,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(255,255,255,0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.appPrimary,
+    shadowColor: Colors.blue,
+    shadowOpacity: 0.4,
+    shadowOffset: {height: 10, width: 10},
+    shadowRadius: 20,
   },
   text: {
+    width: 150,
     color: Colors.white,
     textAlign: 'center',
+    fontWeight: 'bold',
     height: 20,
   },
 });
 
-button.propTypes = {
-
-};
-
-export default button;
+export default Button;
