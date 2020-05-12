@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, View, TouchableOpacity, Text, SafeAreaView, KeyboardAvoidingView, KeyboardAvoidingViewBase, Alert } from 'react-native';
 
 import ButtonLogin from '../../Components/login/button';
-import ButtonFooter from '../../Components/login/ButtonsFooter';
+import ButtonFooter from '../../Components/Onboarding/ButtonsFooter';
 import TextInputLogin from '../../Components/login/TextInputForm';
 import LogoLogin from '../../Components/login/logo';
 import EmailTextField from '../../Components/login/EmailTextField';

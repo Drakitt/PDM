@@ -4,9 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen2 from '../View/login/LoginScreen2';
 import RegisterScreen from '../View/Register/Register';
-import PDM from '../View/Sliders/PDM';
-import DefensaHito3 from '../View/Sliders/DEFDENSAHITO3';
-import Firebase from '../View/Sliders/FIREBASE';
+import PDM from '../View/Onboarding/WelcomeScreen';
+import DefensaHito3 from '../View/Onboarding/AboutScreen';
+import Firebase from '../View/Onboarding/TaskScreen';
 import Administration from '../View/login/LoginScreen';
 
 import Colors from '../Config/Colors';

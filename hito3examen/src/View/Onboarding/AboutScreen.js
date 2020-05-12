@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -6,10 +6,9 @@ import ButtonLogin from '../../Components/login/button';
 import Colors from '../../Config/Colors';
 import Constants from '../../Config/Constants';
 import Images from '../../Config/Images';
-import ButtonFooter from '../../Components/login/ButtonsFooter';
-import Descripcion from '../../Components/login/Descripcion';
+import OnboardingFactory from '../../Components/OnboardingFactory';
 
-const DefensaHito3 = ({ navigation }) => {
+const AboutScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const _onPressP = () => {
     navigation.navigate('Pdm');
@@ -21,18 +20,16 @@ const DefensaHito3 = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Descripcion 
-      source={Images.IMG2}
-      style={styles.desc}
-      textoTit={'DefensaHito3'}
-      textoDesc={'Univ. William Barra 2020' }>
-        
-      </Descripcion>
-      <ButtonFooter
+      <OnboardingFactory
+        source={Images.IMG2}
+        style={styles.desc}
+        textoTit={'DEFENSA HITO3'}
+        textoDesc={'Univ. William Barra Gestión 2020'}
         isLoading={isLoading}
         onPressP={_onPressP}
-        onPressN={_onPressN}>
-      </ButtonFooter>
+        onPressN={_onPressN}
+      >
+      </OnboardingFactory>
     </View>
   );
 };
@@ -41,19 +38,19 @@ const DefensaHito3 = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    paddingBottom:10,
+    paddingBottom: 10,
     backgroundColor: Colors.orange,
     justifyContent: 'space-between',
-},
+  },
   text: {
     color: Colors.white,
     textAlign: 'center',
     fontWeight: 'bold',
     height: 20,
   },
-  desc:{
-    textAlign:'center',
+  desc: {
+    textAlign: 'center',
   }
 });
 
-export default DefensaHito3;
+export default AboutScreen;

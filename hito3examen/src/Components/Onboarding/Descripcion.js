@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, Text, Image, TextBase } from 'react-native';
 import PropTypes from 'prop-types';
 import Colors from '../../Config/Colors';
-import Button from '../../Components/login/ButtonPyN'
+import Button from './ButtonPyN'
 import Constants from '../../Config/Constants';
 import Images from '../../Config/Images';
 const Descripcion = ({ source, textoDesc, textoTit,navigation }) => {

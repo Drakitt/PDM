@@ -6,32 +6,27 @@ import ButtonLogin from '../../Components/login/button';
 import Colors from '../../Config/Colors';
 import Constants from '../../Config/Constants';
 import Images from '../../Config/Images';
-import ButtonFooter from '../../Components/login/ButtonsFooter';
-import Descripcion from '../../Components/login/Descripcion';
+import OnboardingFactory from '../../Components/OnboardingFactory';
 
-const Firebase = ({ navigation }) => {
+const WelcomeScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const _onPressP = () => {
-    navigation.navigate('DefensaHito3');
   };
   const _onPressN = () => {
-    navigation.navigate('Login');
+    navigation.navigate('DefensaHito3');
   };
 
   return (
     <View style={styles.container}>
-      <Descripcion 
-      source={Images.IMG3}
+      <OnboardingFactory 
+      source={Images.IMG1}
       style={styles.desc}
-      textoTit={'FIREBASE'}
-      textoDesc={'Integración de React Native con Firebase' }>
-        
-      </Descripcion>
-      <ButtonFooter
+      textoTit={'PDM'}
+      textoDesc={'Programación de dispositivos Móviles - Unifranz' }
         isLoading={isLoading}
         onPressP={_onPressP}
         onPressN={_onPressN}>
-      </ButtonFooter>
+      </OnboardingFactory>
     </View>
   );
 };
@@ -55,4 +50,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Firebase;
+export default WelcomeScreen;

@@ -6,31 +6,30 @@ import ButtonLogin from '../../Components/login/button';
 import Colors from '../../Config/Colors';
 import Constants from '../../Config/Constants';
 import Images from '../../Config/Images';
-import ButtonFooter from '../../Components/login/ButtonsFooter';
-import Descripcion from '../../Components/login/Descripcion';
+import ButtonFooter from '../../Components/Onboarding/ButtonsFooter';
+import Descripcion from '../../Components/Onboarding/Descripcion';
+import OnboardingFactory from '../../Components/OnboardingFactory';
 
-const Pdm = ({ navigation }) => {
+const TaskScreen = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const _onPressP = () => {
+    navigation.navigate('DefensaHito3');
   };
   const _onPressN = () => {
-    navigation.navigate('DefensaHito3');
+    navigation.navigate('Login');
   };
 
   return (
     <View style={styles.container}>
-      <Descripcion 
-      source={Images.IMG1}
+      <OnboardingFactory 
+      source={Images.IMG3}
       style={styles.desc}
-      textoTit={'PDM'}
-      textoDesc={'Programación de dispositivos Móviles - Unifranz' }>
-        
-      </Descripcion>
-      <ButtonFooter
+      textoTit={'FIREBASE'}
+      textoDesc={'Integración de React Native con Firebase' }
         isLoading={isLoading}
         onPressP={_onPressP}
         onPressN={_onPressN}>
-      </ButtonFooter>
+      </OnboardingFactory>
     </View>
   );
 };
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 3,
     paddingBottom:10,
-    backgroundColor: Colors.green,
+    backgroundColor: Colors.bluee,
     justifyContent: 'space-between',
 },
   text: {
@@ -54,4 +53,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Pdm;
+export default TaskScreen;
