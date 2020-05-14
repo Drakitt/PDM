@@ -2,11 +2,11 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import LoginScreen2 from '../View/login/LoginScreen2';
-import RegisterScreen from '../View/Register/Register';
-import PDM from '../View/Onboarding/WelcomeScreen';
-import DefensaHito3 from '../View/Onboarding/AboutScreen';
-import Firebase from '../View/Onboarding/TaskScreen';
+import LOGIN from '../View/login/LOGIN';
+import MIAPP from '../View/Register/MIAPP';
+import PDM from '../View/Sliders/PDM';
+import DefensaHito3 from '../View/Sliders/DEFDENSAHITO3';
+import Firebase from '../View/Sliders/FIREBASE';
 
 import Colors from '../Config/Colors';
 
@@ -33,7 +33,7 @@ function mainNavigator() {
           />
           <Stack.Screen
             name="Login"
-            component={LoginScreen2}
+            component={LOGIN}
             options={{
               title: 'Login From APP',
               headerStyle: {
@@ -47,8 +47,8 @@ function mainNavigator() {
             }}
           />
           <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
+          name="MIAPP"
+          component={MIAPP}
           options={{
             title: 'Register Form',
             headerStyle: {
