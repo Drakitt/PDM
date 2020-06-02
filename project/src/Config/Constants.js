@@ -16,8 +16,12 @@ const string ={
     USERNAME_ERROR:"Username Incorrecto!!!",
     PASSWORD_ERROR:"Password Incorrecto!!!",
     REGISTER: 'Register',
-  EMPTY_TITLE: 'Review Email/Password values',
-  EMPTY_VALUES: 'Empty values detected',
+    EMPTY_TITLE: 'Review Email/Password values',
+    EMPTY_VALUES: 'Empty values detected',
+    REVIEW_EMAIL: 'Please review email data',
+    ENTER_EMAIL: 'Enter email value',
+    ADD_EMAIL: 'Enter Email',
+    ADD_EMAIL_BUTTON: 'ADD',
 }
 
 export default {
