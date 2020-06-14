@@ -22,6 +22,7 @@ const string ={
     ENTER_EMAIL: 'Enter email value',
     ADD_EMAIL: 'Enter Email',
     ADD_EMAIL_BUTTON: 'ADD',
+    REGISTER_FORM: 'Register Form',
 }
 
 export default {

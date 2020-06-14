@@ -25,9 +25,27 @@ const SettingScreen = () => {
     let isValid = validateCTextField();
     if (isValid) {
       addEmailRowToFirebase();
+      addGroupEmails();
     } else {
       Alert.alert(Constants.STRINGS.REVIEW_EMAIL);
     }
+  }
+  const addGroupEmails =(emailID,userID)=> {
+    const emailsAddedRef = firestore
+    .collection('groupEmails').doc(userID)
+    .collection('email').doc('EMAILS_ADDED');
+    Alert.alert('asd',userID);
+    // emailsAddedRef.SET({
+    //   userID: userID,
+    // })
+    // .then(function () {
+    //   setIsLoading(false);
+    //   Alert.alert('Email creado:', emailsAddedRef.id);
+    // })
+    // .catch(function (error) {
+    //   Alert.alert('Error al crear', error.message);
+    //   setIsLoading(false);
+    // });
   }
 
   const addEmailRowToFirebase = () => {
@@ -43,6 +61,7 @@ const SettingScreen = () => {
     })
       .then(function () {
         setIsLoading(false);
+        addGroupEmails(emailRef.id,userID);
         Alert.alert('Email creado:', emailRef.id);
       })
       .catch(function (error) {

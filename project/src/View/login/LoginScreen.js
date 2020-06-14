@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { 
-    StyleSheet, 
-    View, 
-    SafeAreaView, 
-    KeyboardAvoidingView, 
-    Alert } 
+import {
+    StyleSheet,
+    View,
+    SafeAreaView,
+    KeyboardAvoidingView,
+    Alert
+}
     from 'react-native';
 
 import ButtonLogin from '../../Components/login/button';
@@ -45,8 +46,11 @@ const LoginScreen = ({ navigation }) => {
         if (emailData && passwordData) {
             loginApp(email, password);
         } else {
-            Alert.alert(Constants.STRING.EMPTY_TITLE, Constants.STRING.EMPTY_VALUES);
+            Alert.alert(Constants.STRINGS.EMPTY_TITLE, Constants.STRINGS.EMPTY_VALUES);
         }
+    };
+    const _onRegister = () => {
+        navigation.navigate('Register');
     };
 
     const loginApp = (email, password) => {
@@ -59,16 +63,8 @@ const LoginScreen = ({ navigation }) => {
                     navigation.navigate('App');
                 })
                 .catch(error => {
-                    FirebasePlugin.auth()
-                        .createUserWithEmailAndPassword(email, password)
-                        .then((user) => {
-                            setIsLoading(false);
-                            navigation.navigate('App');
-                        })
-                        .catch(error => {
-                            setIsLoading(false);
-                            Alert.alert('Invalid Values', error.message);
-                        });
+                    setIsLoading(false);
+                    Alert.alert('invalid Values',error.message);
                 });
         } catch (error) {
             setIsLoading(true);
@@ -82,7 +78,7 @@ const LoginScreen = ({ navigation }) => {
                     <LogoLogin style={stylesLoginScreen.logo} />
                     <View style={stylesLoginScreen.form}>
                         <EmailTextField
-                            onChangeText={(email) => {setEmail(email); }}
+                            onChangeText={(email) => { setEmail(email); }}
                             onEndEditing={_validateEmailAddress}
                             error={errorEmail}
                             source={Images.EMAIL}
@@ -99,11 +95,20 @@ const LoginScreen = ({ navigation }) => {
                             secureTextEntry={true}
                             autoCorrect={false}>
                         </TextInputLogin>
-                        <ButtonLogin
-                            isLoading={isLoading}
-                            onPress={_onPress}
-                            titleButton={Constants.STRINGS.TITLE_BUTTON}>
-                        </ButtonLogin>
+                        <View style={stylesLoginScreen.button}>
+                            <ButtonLogin
+                                isLoading={isLoading}
+                                onPress={_onPress}
+                                titleButton={Constants.STRINGS.TITLE_BUTTON}>
+                            </ButtonLogin>
+                        </View>
+                        <View>
+                            <ButtonLogin
+                                isLoading={isLoading}
+                                onPress={_onRegister}
+                                titleButton={Constants.STRINGS.REGISTER_FORM}>
+                            </ButtonLogin>
+                        </View>
                     </View>
                 </View>
             </KeyboardAvoidingView>
@@ -113,22 +118,25 @@ const LoginScreen = ({ navigation }) => {
 
 const stylesLoginScreen = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: Colors.blue,
-      justifyContent: 'center',
-      alignItems: 'center',
+        flex: 1,
+        backgroundColor: Colors.blue,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     logo: {
-      width: '100%',
-      resizeMode: 'contain',
-      alignSelf: 'center',
+        width: '100%',
+        resizeMode: 'contain',
+        alignSelf: 'center',
     },
     form: {
-      justifyContent: 'center',
-      width: '80%',
-      marginBottom: 20,
+        justifyContent: 'center',
+        width: '80%',
+        marginBottom: 20,
     },
-  });
-  
+    button: {
+        marginBottom: 10,
+      },
+});
+
 
 export default LoginScreen;
