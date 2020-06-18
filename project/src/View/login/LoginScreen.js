@@ -22,7 +22,7 @@ import Images from '../../Config/Images';
 import imgPassword from '../../../assets/pass.png';
 import Utils from '../../utils/utils';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ route,navigation }) => {
     const [email, setEmail] = useState('');
     const [errorEmail, setErrorEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -60,6 +60,7 @@ const LoginScreen = ({ navigation }) => {
                 .signInWithEmailAndPassword(email, password)
                 .then(user => {
                     setIsLoading(false);
+                    route.params.route.params.setIsLogged(true);
                     navigation.navigate('App');
                 })
                 .catch(error => {

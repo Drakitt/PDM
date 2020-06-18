@@ -7,9 +7,36 @@ import RegisterScreen from '../View/Register/Register';
 import AppScreen from '../View/App/AppScreen';
 import Colors from '../Config/Colors';
 import SettingScreen from '../View/Setting/SettingScreen';
-
+import SplashScreen from '../View/Splash/SplashScreen';
 
 const Stack = createStackNavigator();
+const StackScreen = ({route}) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        initialParams={{route}}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={RegisterScreen}
+        options={{
+          title: 'Register Form',
+          headerStyle: {
+            backgroundColor: Colors.appPrimary,
+          },
+          headerTintColor: Colors.white,
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            color: Colors.white,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 const Drawer = createDrawerNavigator();
 const DrawerScreen=()=>{
   return (
@@ -38,41 +65,37 @@ const DrawerScreen=()=>{
     </Drawer.Navigator>
   );
 }
-const StackScreen = () => {
+const MainStack = createStackNavigator();
+
+const MainStackScreen = () =>{
+  const [isLoading,setIsLoading]= React.useState(true);
+  const [isLogged, setIsLogged]=React.useState(false);
+  React.useEffect(()=>{
+    setTimeout(()=>{
+      setIsLoading(false);
+    },2000);
+  },[]);
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Login"
-        component={LoginScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Register"
-        component={RegisterScreen}
-        options={{
-          title: 'Register Form',
-          headerStyle: {
-            backgroundColor: Colors.appPrimary,
-          },
-          headerTintColor: Colors.white,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            color: Colors.white,
-          },
-        }}
-      />
-    </Stack.Navigator>
+    <MainStack.Navigator>
+      { isLoading ? (
+        <MainStack.Screen  name="Loading" component={SplashScreen}/>
+        ) : isLogged ? (
+        <MainStack.Screen name="DrawerNavigation" component={DrawerScreen}/>
+        )
+        :(
+          <MainStack.Screen name="LoginRegister" component={StackScreen} initialParams={{setIsLogged}}/>
+        )
+      }
+    </MainStack.Navigator>
   );
 }
+
+
 const mainNavigator=() =>{
   const [isLogged,setIsLogged]=React.useState(null);
   return (
     <NavigationContainer>
-      {isLogged ? (
-        <StackScreen />
-      ) : (
-        <DrawerScreen />
-      )}
+      <MainStackScreen/>
     </NavigationContainer>
   );
 }
